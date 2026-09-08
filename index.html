@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rene · 个人导航</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Quicksand:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --mint: #a8e6cf;
+            --mint-light: #dcedc1;
+            --pink: #ffd3b6;
+            --pink-light: #ffaaa5;
+            --cream: #fff8f0;
+            --text: #5a5a5a;
+            --text-light: #8a8a8a;
+            --white: #ffffff;
+            --shadow: rgba(168, 230, 207, 0.3);
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--mint-light) 50%, var(--pink) 100%);
+            min-height: 100vh;
+            color: var(--text);
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--mint) 0%, var(--pink-light) 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            box-shadow: 0 8px 30px var(--shadow);
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+        
+        .tagline {
+            color: var(--text-light);
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+        
+        .leaf {
+            color: var(--mint);
+        }
+        
+        /* Search */
+        .search-box {
+            max-width: 500px;
+            margin: 30px auto 50px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            background: var(--white);
+            color: var(--text);
+            box-shadow: 0 4px 20px var(--shadow);
+            font-family: inherit;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            box-shadow: 0 6px 30px rgba(168, 230, 207, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .search-box input::placeholder {
+            color: var(--text-light);
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 0.9em;
+            font-weight: 500;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            padding-left: 10px;
+        }
+        
+        /* Links Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 16px;
+        }
+        
+        .link-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 24px 16px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px var(--shadow);
+        }
+        
+        .link-icon {
+            font-size: 2em;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+        }
+        
+        .link-card span {
+            font-size: 0.95em;
+            font-weight: 400;
+        }
+        
+        /* Color themes for icons */
+        .mint-bg { background: linear-gradient(135deg, #e8f5e9 0%, var(--mint) 100%); }
+        .pink-bg { background: linear-gradient(135deg, #fce4ec 0%, var(--pink) 100%); }
+        .blue-bg { background: linear-gradient(135deg, #e3f2fd 0%, #90caf9 100%); }
+        .yellow-bg { background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); }
+        .purple-bg { background: linear-gradient(135deg, #f3e5f5 0%, #ce93d8 100%); }
+        .orange-bg { background: linear-gradient(135deg, #fff3e0 0%, #ffcc80 100%); }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 0.85em;
+        }
+        
+        footer a {
+            color: var(--mint);
+            text-decoration: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .link-card { padding: 18px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="avatar">🌿</div>
+            <h1>rene</h1>
+            <p class="tagline">简单 · 清新 · 实用</p>
+        </header>
+        
+        <div class="search-box">
+            <input type="text" placeholder="搜索..." id="searchInput">
+        </div>
+        
+        <div class="section">
+            <div class="section-title">常用工具</div>
+            <div class="links-grid">
+                <a href="https://github.com" class="link-card">
+                    <div class="link-icon purple-bg">🐙</div>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://chatgpt.com" class="link-card">
+                    <div class="link-icon green-bg">💬</div>
+                    <span>ChatGPT</span>
+                </a>
+                <a href="https://claude.ai" class="link-card">
+                    <div class="link-icon orange-bg">🦊</div>
+                    <span>Claude</span>
+                </a>
+                <a href="https://qwen.ai" class="link-card">
+                    <div class="link-icon blue-bg">🤖</div>
+                    <span>Qwen</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">开发</div>
+            <div class="links-grid">
+                <a href="https://stackoverflow.com" class="link-card">
+                    <div class="link-icon yellow-bg">📚</div>
+                    <span>Stack Overflow</span>
+                </a>
+                <a href="https://掘金" class="link-card">
+                    <div class="link-icon pink-bg">💡</div>
+                    <span>掘金</span>
+                </a>
+                <a href="https://v2ex.com" class="link-card">
+                    <div class="link-icon mint-bg">🔍</div>
+                    <span>V2EX</span>
+                </a>
+                <a href="https://producthunt.com" class="link-card">
+                    <div class="link-icon blue-bg">🚀</div>
+                    <span>Product Hunt</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">生活</div>
+            <div class="links-grid">
+                <a href="https://bilibili.com" class="link-card">
+                    <div class="link-icon pink-bg">📺</div>
+                    <span>Bilibili</span>
+                </a>
+                <a href="https://music.163.com" class="link-card">
+                    <div class="link-icon purple-bg">🎵</div>
+                    <span>网易云</span>
+                </a>
+                <a href="https://x.com" class="link-card">
+                    <div class="link-icon blue-bg">🐦</div>
+                    <span>Twitter</span>
+                </a>
+                <a href="https://reddit.com" class="link-card">
+                    <div class="link-icon orange-bg">🤖</div>
+                    <span>Reddit</span>
+                </a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>🌿 Made with 💚 by rene</p>
+        </footer>
+    </div>
+    
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const links = document.querySelectorAll('.link-card');
+        
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            links.forEach(link => {
+                const text = link.textContent.toLowerCase();
+                link.style.display = text.includes(query) ? 'flex' : 'none';
+            });
+        });
+        
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const query = searchInput.value.trim();
+                if (query) {
+                    window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
